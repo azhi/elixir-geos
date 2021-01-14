@@ -2,13 +2,15 @@ defmodule Geos.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :geos,
-     version: "0.1.0",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     compilers: [:elixir_make] ++ Mix.compilers,
-     deps: deps()]
+    [
+      app: :geos,
+      version: "0.1.0",
+      elixir: "~> 1.4",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      compilers: [:elixir_make] ++ Mix.compilers(),
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -31,7 +33,7 @@ defmodule Geos.Mixfile do
   defp deps do
     [
       {:elixir_make, "~> 0.4", runtime: false},
-      {:geo, "~> 1.0"},
+      {:geo, "~> 3.0"}
     ]
   end
 end
